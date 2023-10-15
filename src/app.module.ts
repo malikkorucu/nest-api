@@ -5,9 +5,16 @@ import { ProductModule } from './product/product.module';
 import { CartModule } from './cart/cart.module';
 import { DatabaseModule } from 'src/_database/database.module';
 import { ConfigModule } from '@nestjs/config';
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [DatabaseModule, ProductModule, CartModule, ConfigModule.forRoot()],
+  imports: [
+    DatabaseModule,
+    ProductModule,
+    UserModule,
+    CartModule,
+    ConfigModule.forRoot(),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Res } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { Product } from './product.entity';
 import { Entity } from 'typeorm';

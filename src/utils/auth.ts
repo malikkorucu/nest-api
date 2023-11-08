@@ -6,7 +6,7 @@ export const compareSyncPass = (pass: string, hashPass: string) => {
   return bcrypt.compare(pass, hashPass, () => {});
 };
 
-export const generateToken = (user) => {
+export const generateToken = user => {
   const { SECRET_KEY } = process.env;
 
   const payload = {

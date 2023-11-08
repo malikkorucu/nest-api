@@ -3,15 +3,15 @@ import { UserSignInDTO, UserSignUpDTO } from './user.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
 import { Response } from 'express';
-
 @Controller('user')
 @ApiTags('Users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get()
-  getUsers() {
-    return 'burası user controlller';
+  @Get('/getUsers')
+  async getUsers(@Res() res: Response) {
+    const userData = await this.userService.getAllUsers();
+    return res.json({ status: true, data: userData });
   }
 
   @Post('/signUp')

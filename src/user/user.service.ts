@@ -25,21 +25,19 @@ export class UserService {
     });
 
     if (!dbUser) {
-      throw new HttpException(
-        'Kayıtlı e-mail bulunamadı !',
-        HttpStatus.BAD_REQUEST,
-      );
+      throw new HttpException('Kayıtlı e-mail bulunamadı !', HttpStatus.BAD_REQUEST);
     }
 
     const isRightPassword = await compare(body.password, dbUser.password);
 
     if (!isRightPassword) {
-      throw new HttpException(
-        'Parola bilgisi yanlış !',
-        HttpStatus.BAD_REQUEST,
-      );
+      throw new HttpException('Parola bilgisi yanlış !', HttpStatus.BAD_REQUEST);
     }
 
     return sendTokenToClient(dbUser);
+  }
+
+  async getAllUsers() {
+    return await this.userRepository.find({});
   }
 }

@@ -11,7 +11,7 @@ export class UserController {
   @Get('/getUsers')
   async getUsers(@Res() res: Response) {
     const userData = await this.userService.getAllUsers();
-    return res.json({ status: true, message: '***** ye mansur !', data: userData });
+    return res.json({ status: true, data: userData });
   }
 
   @Post('/signUp')

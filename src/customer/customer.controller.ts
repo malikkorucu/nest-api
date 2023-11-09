@@ -1,20 +1,30 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CustomerService } from './customers.service';
-import { CustomerCreateDTO } from './customer.dto';
+import { CustomerCreateDTO, CustomerUpdateDTO } from './customer.dto';
 
 @Controller('customer')
 @ApiTags('Customer')
 export class CustomerController {
   constructor(private readonly customerService: CustomerService) {}
 
-  @Post('')
+  @Post()
   public async create(@Body() body: CustomerCreateDTO) {
     await this.customerService.insertCustomer(body);
   }
 
   @Get('/getAll')
-  public async getCustomers() {
+  async getCustomers() {
     return await this.customerService.getAllCustomers();
+  }
+
+  @Put(':id')
+  async update(@Param('id', new ParseIntPipe()) id, @Body() customer: CustomerUpdateDTO) {
+    return await this.customerService.updateCustomer(id, customer);
+  }
+
+  @Delete(':id')
+  async delete(@Param('id', new ParseIntPipe()) id) {
+    return await this.customerService.deleteCustomer(id);
   }
 }

@@ -5,20 +5,34 @@ export class CustomerCreateDTO {
   @ApiProperty()
   @IsString()
   @MaxLength(50)
-  placeName: string;
+  placeName?: string | null;
 
   @ApiProperty()
   @IsString()
   @MaxLength(50)
-  operatorName: string;
+  operatorName?: string | null;
 
   @ApiProperty()
   @IsString()
   @MaxLength(50)
-  phoneNumber: string;
+  phoneNumber?: string | null;
 
   @ApiProperty()
   @IsString()
   @MaxLength(50)
-  description: string;
+  description?: string | null;
+}
+
+export class CustomerUpdateDTO {
+  @ApiProperty()
+  placeName?: string | null;
+
+  @ApiProperty()
+  operatorName?: string | null;
+
+  @ApiProperty()
+  phoneNumber?: string | null;
+
+  @ApiProperty()
+  description?: string | null;
 }

@@ -15,12 +15,7 @@ export class ProductService {
   }
 
   async saveProduct(createProductDto: CreateProductDto): Promise<string> {
-    this.productRepository
-      .createQueryBuilder()
-      .insert()
-      .values(createProductDto)
-      .execute();
-
+    this.productRepository.createQueryBuilder().insert().values(createProductDto).execute();
     return 'başarılı';
   }
 }

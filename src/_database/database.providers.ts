@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 import { Cart } from '../cart/cart.entity';
 import { Product } from '../product/product.entity';
 import { User } from 'src/user/user.entity';
+import { Customer } from 'src/customer/customer.entity';
 
 export const databaseProviders = [
   {
@@ -34,6 +35,11 @@ export const databaseProviders = [
   {
     provide: 'USER_REPOSITORY',
     useFactory: (dataSource: DataSource) => dataSource.getRepository(User),
+    inject: ['DATA_SOURCE'],
+  },
+  {
+    provide: 'CUSTOMER_REPOSITORY',
+    useFactory: (dataSource: DataSource) => dataSource.getRepository(Customer),
     inject: ['DATA_SOURCE'],
   },
 ];

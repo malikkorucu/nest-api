@@ -15,11 +15,7 @@ export class CartService {
   }
 
   async save(body: CreateProductDto) {
-    await this.cartRepository
-      .createQueryBuilder()
-      .insert()
-      .values(body)
-      .execute();
+    await this.cartRepository.createQueryBuilder().insert().values(body).execute();
     return 'Test';
   }
 }

@@ -12,7 +12,7 @@ export class UserController {
   @Header('Content-type', 'application/json')
   async getUsers(@Res() res: Response) {
     const userData = await this.userService.getAllUsers();
-    return res.json({ status: true, data: JSON.stringify(userData) });
+    return res.json({ status: true, data: userData });
   }
 
   @Post('/signUp')

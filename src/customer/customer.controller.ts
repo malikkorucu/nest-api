@@ -19,7 +19,7 @@ export class CustomerController {
   }
 
   @Get(':id')
-  async getCustomer(@Param('id', new ParseIntPipe()) id) {
+  async getCustomer(@Param('id', new ParseIntPipe()) id: number) {
     return await this.customerService.getCustomer(id);
   }
 

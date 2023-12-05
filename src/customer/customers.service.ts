@@ -26,4 +26,8 @@ export class CustomerService {
   public async deleteCustomer(id: number) {
     await this.customerRepository.delete(id);
   }
+
+  public async getCustomer(id: number) {
+    await this.customerRepository.findOne({ where: { id } });
+  }
 }

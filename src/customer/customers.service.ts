@@ -28,6 +28,6 @@ export class CustomerService {
   }
 
   public async getCustomer(id: number) {
-    await this.customerRepository.findOne({ where: { id } });
+    return await this.customerRepository.findOne({ where: { id } });
   }
 }

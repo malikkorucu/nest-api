@@ -18,6 +18,11 @@ export class CustomerController {
     return await this.customerService.getAllCustomers();
   }
 
+  @Get(':id')
+  async getCustomer(@Param('id', new ParseIntPipe()) id) {
+    return await this.customerService.getCustomer(id);
+  }
+
   @Put(':id')
   async update(@Param('id', new ParseIntPipe()) id, @Body() customer: CustomerUpdateDTO) {
     return await this.customerService.updateCustomer(id, customer);
